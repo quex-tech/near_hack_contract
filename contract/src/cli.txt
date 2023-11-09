@@ -1,0 +1,2 @@
+export CONTRACT_ID=dev-1699312784060-17284108275785
+near call $CONTRACT_ID new '{"owner_id": "'$CONTRACT_ID'"}' --accountId $CONTRACT_ID

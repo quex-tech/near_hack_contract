@@ -1,0 +1,43 @@
+[package]
+name = "contract"
+version = "0.1.0"
+authors = ["Vadim Ilin <vadim@near.org>"]
+edition = "2018"
+publish = false
+
+[lib]
+path = "contract/src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+near-sdk = { git = "https://github.com/near/near-sdk-rs.git", rev = "a780010b0df99c44a688510451f64da3eb2b8fe9" }
+bs58 = "0.4"
+hex = "0.4"
+base64 = "0.12"
+serde = "1.0"
+serde_json = "1.0"
+
+
+[dev-dependencies]
+anyhow = "1.0"
+borsh = "0.9"
+maplit = "1.0"
+near-units = "0.1.0"
+serde = "1.0"
+serde_with = "1"
+serde_json = { version = "1.0", features = ["arbitrary_precision"] }
+tokio = { version = "1.10.0", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3.5", features = ["env-filter"] }
+
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
+
+[workspace]
+members = []
